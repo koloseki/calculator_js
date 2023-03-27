@@ -1,38 +1,60 @@
-    let display = document.getElementById('display');
+let mainArray = [];
+let operator = "";
+let secondArray = [];
 
-    function addToDisplay(value){
-    display.value += value;
+function addToArray(value){
+    if(operator === ""){
+        mainArray.push(value);
+        let joined = mainArray.join('');
+        mainArray = [parseInt(joined)];
+        document.querySelector('#display').value = mainArray
+        console.log(mainArray);
+        console.log(operator);
+    } else {
+        secondArray.push(value);
+        let joined = secondArray.join('');
+        secondArray = [parseInt(joined)];
+        document.querySelector('#display').value = secondArray
+        console.log(secondArray);
+        console.log(operator);
+    }
 }
 
-    function calculate(){
-    const equation = display.value;
-    const operators = ['+', '-', '*', '/'];
-
-    // Sprawdzamy, czy równanie zawiera któryś z operatorów
-    const operator = operators.find(op => equation.includes(op));
-
-    if (operator) {
-    // Jeśli równanie zawiera operator, dzielimy je na dwie liczby
-    const [num1, num2] = equation.split(operator);
-
-    // Wyliczamy wynik w zależności od operatora
-    let result;
-    switch (operator) {
-    case '+':
-    result = parseFloat(num1) + parseFloat(num2);
-    break;
-    case '-':
-    result = parseFloat(num1) - parseFloat(num2);
-    break;
-    case '*':
-    result = parseFloat(num1) * parseFloat(num2);
-    break;
-    case '/':
-    result = parseFloat(num1) / parseFloat(num2);
-    break;
+function setOperator(value) {
+    operator = value;
 }
 
-    // Wyświetlamy wynik na ekranie
-    display.value = result;
+function calculate(){
+    if(mainArray.length > 0 && secondArray.length > 0){
+        if(operator === "+"){
+            let result = mainArray[0] + secondArray[0];
+            document.querySelector('#display').value = result
+            console.log(result);
+            mainArray[0] = result;
+        } else if(operator === "-") {
+            let result = mainArray[0] - secondArray[0];
+            document.querySelector('#display').value = result
+            console.log(result);
+            mainArray[0] = result;
+        } else if(operator === "*") {
+            let result = mainArray[0] * secondArray[0];
+            document.querySelector('#display').value = result
+            console.log(result);
+            mainArray[0] = result;
+        } else if(operator === "/") {
+            let result = mainArray[0] / secondArray[0];
+            document.querySelector('#display').value = result
+            console.log(result);
+            mainArray[0] = result;
+        }
+    }
+    operator = "";
+    secondArray = [];
 }
+
+function clearContent(){
+    document.querySelector('#display').value = ''
+    mainArray = [];
+    operator = "";
+    secondArray = [];
 }
