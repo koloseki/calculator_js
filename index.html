@@ -9,28 +9,35 @@
 <body>
 
 <main>
-<input type="text" id="display" disabled content="ak">
-<br>
-<button onclick="addToArray(1)">1</button>
-<button onclick="addToArray(2)">2</button>
-<button onclick="addToArray(3)">3</button>
-    <button onclick="setOperator('+')">+</button>
-<br>
-<button onclick="addToArray(4)">4</button>
-<button onclick="addToArray(5)">5</button>
-<button onclick="addToArray(6)">6</button>
-    <button onclick="setOperator('-')">-</button>
-<br>
-<button onclick="addToArray(7)">7</button>
-<button onclick="addToArray(8)">8</button>
-<button onclick="addToArray(9)">9</button>
-    <button onclick="setOperator('*')">*</button>
-    <br>
-<button onclick="addToArray('0')">0</button>
-<button onclick="a">.</button>
-<button onclick="calculate()">=</button>
-    <button onclick="setOperator('/')">/</button>
+        <input  type="text" id="display" disabled >
+
+
+    <div class="break"></div>
+    <button onclick="addDigitToExpression(7)">7</button>
+    <button onclick="addDigitToExpression(8)">8</button>
+    <button onclick="addDigitToExpression(9)">9</button>
+
+    <button onclick="addOperatorToExpression('/')">/</button>
+    <div class="break"></div>
+    <button onclick="addDigitToExpression(4)">4</button>
+    <button onclick="addDigitToExpression(5)">5</button>
+    <button onclick="addDigitToExpression(6)">6</button>
+
+    <button onclick="addOperatorToExpression('+')">+</button>
+    <div class="break"></div>
+
+    <button onclick="addDigitToExpression(1)">1</button>
+    <button onclick="addDigitToExpression(2)">2</button>
+    <button onclick="addDigitToExpression(3)">3</button>
+    <button onclick="addOperatorToExpression('-')">-</button>
+    <div class="break"></div>
+
     <button onclick="clearContent()">CE</button>
+    <button onclick="addDigitToExpression(0)">0</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="addOperatorToExpression('*')">*</button>
+
+
 
 </main>
 </body>

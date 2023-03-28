@@ -1,60 +1,77 @@
-let mainArray = [];
-let operator = "";
-let secondArray = [];
+let display = document.querySelector('#display');
+let expression = [];
+display.value = ''
 
-function addToArray(value){
-    if(operator === ""){
-        mainArray.push(value);
-        let joined = mainArray.join('');
-        mainArray = [parseInt(joined)];
-        document.querySelector('#display').value = mainArray
-        console.log(mainArray);
-        console.log(operator);
-    } else {
-        secondArray.push(value);
-        let joined = secondArray.join('');
-        secondArray = [parseInt(joined)];
-        document.querySelector('#display').value = secondArray
-        console.log(secondArray);
-        console.log(operator);
-    }
+function addDigitToExpression(digit) {
+    expression.push(digit);
+    display.value = expression.join('');
 }
 
-function setOperator(value) {
-    operator = value;
+function addOperatorToExpression(operator) {
+    expression.push(operator);
+    display.value = expression.join('');
 }
 
-function calculate(){
-    if(mainArray.length > 0 && secondArray.length > 0){
-        if(operator === "+"){
-            let result = mainArray[0] + secondArray[0];
-            document.querySelector('#display').value = result
-            console.log(result);
-            mainArray[0] = result;
-        } else if(operator === "-") {
-            let result = mainArray[0] - secondArray[0];
-            document.querySelector('#display').value = result
-            console.log(result);
-            mainArray[0] = result;
-        } else if(operator === "*") {
-            let result = mainArray[0] * secondArray[0];
-            document.querySelector('#display').value = result
-            console.log(result);
-            mainArray[0] = result;
-        } else if(operator === "/") {
-            let result = mainArray[0] / secondArray[0];
-            document.querySelector('#display').value = result
-            console.log(result);
-            mainArray[0] = result;
+function calculate() {
+    let result = null;
+    let currentNumber = null;
+    let currentOperator = null;
+
+    for (let i = 0; i < expression.length; i++) {
+        let currentChar = expression[i];
+
+        if (isNaN(currentChar)) {
+            // currentChar is an operator
+            if (currentOperator === null) {
+                // First operator encountered, so set currentOperator to currentChar
+                currentOperator = currentChar;
+                result = currentNumber;
+                currentNumber = null;
+            } else {
+                // Perform the operation indicated by currentOperator and the currentNumber
+                if (currentOperator === '+') {
+                    result += currentNumber;
+                } else if (currentOperator === '-') {
+                    result -= currentNumber;
+                } else if (currentOperator === '*') {
+                    result *= currentNumber;
+                } else if (currentOperator === '/') {
+                    result /= currentNumber;
+                }
+                currentOperator = currentChar;
+                currentNumber = null;
+            }
+        } else {
+            // currentChar is a digit
+            if (currentNumber === null) {
+                // First digit encountered, so set currentNumber to currentChar
+                currentNumber = Number(currentChar);
+            } else {
+                // Append currentChar to currentNumber
+                currentNumber = currentNumber * 10 + Number(currentChar);
+            }
         }
     }
-    operator = "";
-    secondArray = [];
+
+    // Perform the final operation indicated by currentOperator and the currentNumber
+    if (currentOperator === '+') {
+        result += currentNumber;
+    } else if (currentOperator === '-') {
+        result -= currentNumber;
+    } else if (currentOperator === '*') {
+        result *= currentNumber;
+    } else if (currentOperator === '/') {
+        result /= currentNumber;
+    } else {
+        // No operator encountered, so the entire expression is just a single number
+        result = currentNumber;
+    }
+
+    display.value = result;
+    expression = [result];
 }
 
-function clearContent(){
-    document.querySelector('#display').value = ''
-    mainArray = [];
-    operator = "";
-    secondArray = [];
+function clearContent() {
+    display.value = '';
+    expression = [];
 }

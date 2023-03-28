@@ -1,5 +1,5 @@
 body{
-    background-color: #2c2c2c;
+    background-color: #222831;
     color: #e2fff6;
     display: flex;
     align-items: center;
@@ -7,18 +7,53 @@ body{
     height: 100vh;
 }
 
-input{
-    color: aliceblue;
+main{
+    background-color: #393E46;
+    padding: 2rem;
+    display: flex;
+   flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 35vh;
+    border-radius: 1rem;
 }
 
+
 button{
-    width: 5vw;
-    height: 5vh;
+    border: 1px solid #222831;
+    border-radius: 1rem;
+    background-color: #00ADB5;
+    color: #222831;
+    width: 4rem;
+    height: 4rem;
+    font-size: larger;
 }
+.break{
+    flex-basis: 100%;
+    width: 0;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #007f87;
+}
+
+button:active{
+    background-color: #00646c;
+}
+
 
 
 input
 {
-    height: 4vh;
-    width: 20vw;
+    text-align: right;
+    background-color: #EEEEEE;
+    height: 3rem;
+    width: 16rem;
+    border-radius: 1rem;
+    font-size: larger;
+    padding-right: 1rem;
+    text-align: right;
+    overflow-wrap: break-word;
 }
+
