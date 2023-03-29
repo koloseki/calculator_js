@@ -14,7 +14,7 @@ main{
    flex-wrap: wrap;
     justify-content: center;
     gap: 0.2rem;
-    width: 35vh;
+    width: 30vh;
     border-radius: 1rem;
 }
 
