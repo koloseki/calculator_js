@@ -2,9 +2,24 @@ body{
     background-color: #222831;
     color: #e2fff6;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
+    margin: 0;
+    overflow: hidden;
+
+}
+
+header{
+    color: #EEEEEE;
+    background-color: #2c2c2c;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    font-size: 1.5rem;
 }
 
 main{
@@ -14,8 +29,9 @@ main{
    flex-wrap: wrap;
     justify-content: center;
     gap: 0.2rem;
-    width: 35vh;
+    width: 30vh;
     border-radius: 1rem;
+    overflow: hidden;
 }
 
 
@@ -57,3 +73,28 @@ input
     overflow-wrap: break-word;
 }
 
+footer{
+    width: 100vw;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 0.5vw;
+    justify-self: flex-end;
+    align-items: center;
+    background-color: #2c2c2c;
+}
+
+.gitLink{
+    margin-top: 1vh;
+}
+
+
+.imgOfGithub{
+    transition: transform .7s ease-in-out;
+}
+
+.imgOfGithub:hover{
+    transform: rotate(360deg);
+
+
+}
